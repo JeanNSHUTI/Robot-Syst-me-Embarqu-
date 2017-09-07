@@ -1,4 +1,3 @@
-
 import RPi.GPIO as GPIO
 from time import sleep
 
@@ -6,62 +5,75 @@ from time import sleep
 GPIO.setmode(GPIO.BOARD)
 Motor1A = 16
 Motor1B = 18
-Motor1E = 22
+pinPWMG = 22
 
 Motor2A = 19
 Motor2B = 21
-Motor2E = 23
+#Motor2E = 23
+pinPWMD = 12
 
-SensorRoueD = 12
+SensorRoueD = 15
 SensorRoueG = 11
 
 compteurG = 0
 compteurD = 0
 
+
 #interruption
 def IncrementSensorG(channel):
 	global compteurG
-        print "compteurG = %d " %compteurG
-	print "gauche"
+        #print "compteurG = %d " %compteurG
 	compteurG = compteurG + 1
         #GPIO.cleanup()
 
 def IncrementSensorD(channel):
 	global compteurD
-	print "compteurD = %d " %compteurD
-        print "droite"
+	#print "compteurD = %d " %compteurD
 	compteurD = compteurD + 1
 
 
+GPIO.setup(pinPWMD,GPIO.OUT)
+D = GPIO.PWM(pinPWMD,500)
 
-GPIO.setup(SensorRoueD,GPIO.IN)
-GPIO.setup(SensorRoueG,GPIO.IN)
+GPIO.setup(pinPWMG,GPIO.OUT)
+G = GPIO.PWM(pinPWMG,500)
+
+GPIO.setup(SensorRoueD,GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(SensorRoueG,GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 GPIO.setup(Motor1A,GPIO.OUT)
 GPIO.setup(Motor1B,GPIO.OUT)
-GPIO.setup(Motor1E,GPIO.OUT)
+#GPIO.setup(Motor1E,GPIO.OUT)
 
 GPIO.setup(Motor2A,GPIO.OUT)
 GPIO.setup(Motor2B,GPIO.OUT)
-GPIO.setup(Motor2E,GPIO.OUT)
+#GPIO.setup(Motor2E,GPIO.OUT)
 
-GPIO.add_event_detect(SensorRoueD, GPIO.FALLING, callback = IncrementSensorG)
-GPIO.add_event_detect(SensorRoueG, GPIO.FALLING, callback = IncrementSensorD)
+GPIO.add_event_detect(SensorRoueD, GPIO.RISING, callback = IncrementSensorG, bouncetime = 29)
+GPIO.add_event_detect(SensorRoueG, GPIO.RISING, callback = IncrementSensorD, bouncetime = 29)
 
 print "Forward"
+
 GPIO.output(Motor1A,GPIO.HIGH)
 GPIO.output(Motor1B,GPIO.LOW)
-GPIO.output(Motor1E,GPIO.HIGH)
+G.start(100)
+#GPIO.output(Motor1E,GPIO.HIGH)
+
+
 
 GPIO.output(Motor2A,GPIO.HIGH)
 GPIO.output(Motor2B,GPIO.LOW)
-GPIO.output(Motor2E,GPIO.HIGH)
+D.start(93)
+#GPIO.output(Motor2E,GPIO.HIGH)
 
-sleep(10)
+sleep(5)
+
+print "compteurD = %d " %compteurD
+print "compteurG = %d " %compteurG
 
 print "Stopping motor"
-GPIO.output(Motor1E,GPIO.LOW)
-GPIO.output(Motor2E,GPIO.LOW)
+#GPIO.output(Motor1E,GPIO.LOW)
+#GPIO.output(Motor2E,GPIO.LOW)
 
 GPIO.cleanup()
 
