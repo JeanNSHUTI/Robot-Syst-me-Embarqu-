@@ -22,10 +22,10 @@ compteurD = 0
 
 
 GPIO.setup(Motor1A,GPIO.OUT)
-D = GPIO.PWM(Motor1A,100)
+D = GPIO.PWM(Motor1A,10)
 
 GPIO.setup(Motor2A,GPIO.OUT)
-G = GPIO.PWM(Motor2A,100)
+G = GPIO.PWM(Motor2A,10)
 
 GPIO.setup(SensorRoueD,GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(SensorRoueG,GPIO.IN, pull_up_down=GPIO.PUD_UP)
@@ -68,7 +68,7 @@ GPIO.output(Motor1E,GPIO.HIGH)
 
 #GPIO.output(Motor2A,GPIO.HIGH)
 GPIO.output(Motor2B,GPIO.LOW)
-D.start(100) #PWM
+D.start(93) #PWM
 GPIO.output(Motor2E,GPIO.HIGH)
 
 sleep(5)
