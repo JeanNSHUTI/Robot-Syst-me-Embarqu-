@@ -21,14 +21,14 @@ compteurD = 0
 #interruption
 def IncrementSensorG(channel):
         print "compteurG = %d " %compteurG
-        
-		compteurG = compteurG + 1
-        GPIO.cleanup()
+	print "gauche"
+	compteurG = compteurG + 1
+        #GPIO.cleanup()
 
 def IncrementSensorD(channel):
-		print "compteurD = %d " %compteurD
+	print "compteurD = %d " %compteurD
         print "droite"
-		compteurD = compteurD + 1
+	compteurD = compteurD + 1
 
 GPIO.add_event_detect(SensorRoueD, GPIO.FALLING, callback = IncrementSensorG)
 GPIO.add_event_detect(SensorRoueG, GPIO.FALLING, callback = IncrementSensorD)
@@ -44,18 +44,6 @@ GPIO.setup(Motor2A,GPIO.OUT)
 GPIO.setup(Motor2B,GPIO.OUT)
 GPIO.setup(Motor2E,GPIO.OUT)
 
-
-#interruption
-def IncrementSensorG(channel):
-        print "compteurG = %d " %compteurG
-	print "gauche"
-	compteurG = compteurG + 1
-        #GPIO.cleanup()
-
-def IncrementSensorD(channel):
-	print "compteurD = %d " %compteurD
-        print "droite"
-	compteurD = compteurD + 1
 
 
 print "Forward"
