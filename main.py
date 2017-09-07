@@ -5,12 +5,12 @@ from time import sleep
 ###     Setup     ###
 
 GPIO.setmode(GPIO.BOARD)
-PWMG = 12
-MotorG_A = 7
-MotorGE_ = 22
+PWMG = 7
+MotorG_A = 12
+MotorG_E = 22
 
-PWMD = 16
-MotorD_A = 18
+PWMD = 18
+MotorD_A = 16
 MotorD_E = 15
 
 #SensorRoueD = 15
@@ -23,18 +23,18 @@ MotorD_E = 15
 #GPIO.setup(SensorRoueG,GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 GPIO.setup(PWMG,GPIO.OUT)
-G = GPIO.PWM(PWMG,10)
+G = GPIO.PWM(PWMG,100)
 
 GPIO.setup(PWMD,GPIO.OUT)
-D = GPIO.PWM(PWMD,10)
+D = GPIO.PWM(PWMD,100)
 
 #GPIO.setup(Motor1A,GPIO.OUT)
-GPIO.setup(Motor1B,GPIO.OUT)
-GPIO.setup(Motor1E,GPIO.OUT)
+GPIO.setup(MotorG_A,GPIO.OUT)
+GPIO.setup(MotorG_E,GPIO.OUT)
 
 #GPIO.setup(Motor2A,GPIO.OUT)
-GPIO.setup(Motor2B,GPIO.OUT)
-GPIO.setup(Motor2E,GPIO.OUT)
+GPIO.setup(MotorD_A,GPIO.OUT)
+GPIO.setup(MotorD_E,GPIO.OUT)
 
 ###     Interruption Capteur Roue Codeuse    ###
 def IncrementSensorG(channel):
@@ -58,16 +58,16 @@ def IncrementSensorD(channel):
 print "Forward"
 
 #GPIO.output(Motor1A,GPIO.HIGH)
-G.start(78)   #PWM
+G.start(70)   #PWM
 GPIO.output(MotorG_A,GPIO.LOW)
 GPIO.output(MotorG_E,GPIO.HIGH)
 
 #GPIO.output(Motor2A,GPIO.HIGH)
-D.start(100) #PWM
+D.start(55) #PWM
 GPIO.output(MotorD_A,GPIO.LOW)
 GPIO.output(MotorD_E,GPIO.HIGH)
 
-sleep(5)
+sleep(3)
 
 #print "compteurD = %d " %compteurD
 #print "compteurG = %d " %compteurG
