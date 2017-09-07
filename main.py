@@ -60,15 +60,15 @@ GPIO.add_event_detect(SensorRoueG, GPIO.RISING, callback = IncrementSensorD, bou
 print "Forward"
 
 #GPIO.output(Motor1A,GPIO.HIGH)
-GPIO.output(Motor1B,GPIO.LOW)
-G.start(100)   #PWM
-GPIO.output(Motor1E,GPIO.HIGH)
+#GPIO.output(Motor1B,GPIO.LOW)
+#G.start(78)   #PWM
+#GPIO.output(Motor1E,GPIO.HIGH)
 
 
 
 #GPIO.output(Motor2A,GPIO.HIGH)
 GPIO.output(Motor2B,GPIO.LOW)
-D.start(93) #PWM
+D.start(100) #PWM
 GPIO.output(Motor2E,GPIO.HIGH)
 
 sleep(5)
