@@ -35,15 +35,15 @@ GPIO.setup(Motor2E,GPIO.OUT)
 
 #interruption
 def IncrementSensorG(channel):
-        print "compteurG = %d " %compteurG
-        
-		compteurG = compteurG + 1
-        GPIO.cleanup()
+        print "compteurG = %d " %compteurG 
+	print "gauche"
+	compteurG = compteurG + 1
+        #GPIO.cleanup()
 
 def IncrementSensorD(channel):
-		print "compteurD = %d " %compteurD
+	print "compteurD = %d " %compteurD
         print "droite"
-		compteurD = compteurD + 1
+	compteurD = compteurD + 1
 
 print "Forward"
 GPIO.output(Motor1A,GPIO.HIGH)
