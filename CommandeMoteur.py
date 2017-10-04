@@ -20,12 +20,14 @@ compteurD = 0
 
 #interruption
 def IncrementSensorG(channel):
+	global compteurG
         print "compteurG = %d " %compteurG
 	print "gauche"
 	compteurG = compteurG + 1
         #GPIO.cleanup()
 
 def IncrementSensorD(channel):
+	global compteurD
 	print "compteurD = %d " %compteurD
         print "droite"
 	compteurD = compteurD + 1
