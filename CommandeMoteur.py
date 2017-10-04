@@ -30,8 +30,7 @@ def IncrementSensorD(channel):
         print "droite"
 	compteurD = compteurD + 1
 
-GPIO.add_event_detect(SensorRoueD, GPIO.FALLING, callback = IncrementSensorG)
-GPIO.add_event_detect(SensorRoueG, GPIO.FALLING, callback = IncrementSensorD)
+
 
 GPIO.setup(SensorRoueD,GPIO.IN)
 GPIO.setup(SensorRoueG,GPIO.IN)
@@ -44,7 +43,8 @@ GPIO.setup(Motor2A,GPIO.OUT)
 GPIO.setup(Motor2B,GPIO.OUT)
 GPIO.setup(Motor2E,GPIO.OUT)
 
-
+GPIO.add_event_detect(SensorRoueD, GPIO.FALLING, callback = IncrementSensorG)
+GPIO.add_event_detect(SensorRoueG, GPIO.FALLING, callback = IncrementSensorD)
 
 print "Forward"
 GPIO.output(Motor1A,GPIO.HIGH)
