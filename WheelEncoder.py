@@ -12,7 +12,7 @@ GPIO.setmode(11)
 	#GPIO.output(A, 0)
 
 GPIO.setup(Encode, GPIO.IN, GPIO.PUD_UP)
-GPIO.setup(M1, GPIO.OUT)
+#GPIO.setup(M1, GPIO.OUT)
 CurRot = 0
 Rotations = 0
 Rev = 0
