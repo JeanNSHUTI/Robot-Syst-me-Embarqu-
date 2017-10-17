@@ -1,7 +1,8 @@
 import RPi.GPIO as GPIO
 from time import sleep
-
-
+	
+###     Fonctions     ###
+	
 ###     Setup     ###
 def setup():
 	GPIO.setmode(GPIO.BOARD)
@@ -38,6 +39,25 @@ def setup():
 	
 	GPIO.add_event_detect(SensorRoueD, GPIO.RISING, callback = IncrementSensorG, bouncetime = 29)
 	GPIO.add_event_detect(SensorRoueG, GPIO.RISING, callback = IncrementSensorD, bouncetime = 29)
+	
+def drive():
+	print "Forward"
+	#GPIO.output(Motor1A,GPIO.HIGH)
+	G.start(78)   #PWM
+	GPIO.output(MotorG_A,GPIO.LOW)
+	GPIO.output(MotorG_E,GPIO.HIGH)
+
+	#GPIO.output(Motor2A,GPIO.HIGH)
+	D.start(100) #PWM
+	GPIO.output(MotorD_A,GPIO.LOW)
+	GPIO.output(MotorD_E,GPIO.HIGH)
+	
+def stop():
+	print "Stopping motor"
+	GPIO.output(MotorG_E,GPIO.LOW)
+	GPIO.output(MotorD_E,GPIO.LOW)
+
+	GPIO.cleanup()
 
 ###     Interruptions for Capteur Roue Codeuse    ###
 def IncrementSensorG(channel):
@@ -59,42 +79,3 @@ print "compteurD = %d " %compteurD
 print "compteurG = %d " %compteurG
 
 stop()
-
-###     Fonctions     ###
-
-##   Avancer   ##
-def avancer():
-	print "Forward"
-	#GPIO.output(Motor1A,GPIO.HIGH)
-	G.start(78)   #PWM
-	GPIO.output(MotorG_A,GPIO.LOW)
-	GPIO.output(MotorG_E,GPIO.HIGH)
-
-	#GPIO.output(Motor2A,GPIO.HIGH)
-	D.start(100) #PWM
-	GPIO.output(MotorD_A,GPIO.LOW)
-	GPIO.output(MotorD_E,GPIO.HIGH)
-
-def drive():
-	print "Forward"
-	#GPIO.output(Motor1A,GPIO.HIGH)
-	G.start(78)   #PWM
-	GPIO.output(MotorG_A,GPIO.LOW)
-	GPIO.output(MotorG_E,GPIO.HIGH)
-
-	#GPIO.output(Motor2A,GPIO.HIGH)
-	D.start(100) #PWM
-	GPIO.output(MotorD_A,GPIO.LOW)
-	GPIO.output(MotorD_E,GPIO.HIGH)
-	
-def stop():
-	print "Stopping motor"
-	GPIO.output(MotorG_E,GPIO.LOW)
-	GPIO.output(MotorD_E,GPIO.LOW)
-
-	GPIO.cleanup()
-
-
-
-
-
