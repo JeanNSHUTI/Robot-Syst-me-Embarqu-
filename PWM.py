@@ -1,10 +1,12 @@
-from RPIO import PWM
+import RPi.GPIO as GPIO
+from time import sleep
 
-servo = PWM.Servo()
+GPIO.setmode(GPIO.BOARD)
+PWM = 16
 
-# Set servo on GPIO17 to 1200µs (1.2ms)
-servo.set_servo(17, 1200)
+GPIO.setup(PWM,GPIO.OUT)
+D = GPIO.PWM(PWM,100)
 
+D.start(50)
 
-# Clear servo on GPIO17
-servo.stop_servo(17)
+GPIO.cleanup()
