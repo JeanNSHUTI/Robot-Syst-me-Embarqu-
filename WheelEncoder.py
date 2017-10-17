@@ -6,7 +6,7 @@ Rotate = 3 - 1
 #M1 = int(sys.argv[3])
 
 #Pins = [17, 18, 27, 22, 23, 24, 25, 4, 28, 29, 30, 31]
-GPIO.setmode(11)
+GPIO.setmode(GPIO.BOARD)
 #for A in Pins:
 	#GPIO.setup(A, GPIO.OUT)
 	#GPIO.output(A, 0)
@@ -29,7 +29,7 @@ def Wheel():
 	sys.stdout.write(str(CurRot)+" ")
 	sys.stdout.flush()
 	if CurRot == 20 and Rotations == Rotate:
-		GPIO.output(M1, 0)
+		#GPIO.output(M1, 0)
 		print "\n{} Rotations!".format(Rotate+1)
 		Running = 0
 	elif CurRot == 20:
