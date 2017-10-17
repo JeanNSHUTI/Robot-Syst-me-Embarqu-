@@ -25,10 +25,10 @@ GPIO.setup(SensorRoueG,GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(SensorRoueD,GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 GPIO.setup(PWMG,GPIO.OUT)
-G = GPIO.PWM(PWMG,10)
+G = GPIO.PWM(PWMG,100)
 
 GPIO.setup(PWMD,GPIO.OUT)
-D = GPIO.PWM(PWMD,10)
+D = GPIO.PWM(PWMD,100)
 
 #GPIO.setup(Motor1A,GPIO.OUT)
 GPIO.setup(MotorG_A,GPIO.OUT)
@@ -44,15 +44,15 @@ def drive():
 	print "Forward"
 	#GPIO.output(Motor1A,GPIO.HIGH)
 
-	G.start(78)   #PWM
+	G.start(70)   #PWM
 	GPIO.output(MotorG_A,GPIO.LOW)
 	GPIO.output(MotorG_E,GPIO.HIGH)
 
 	#GPIO.output(Motor2A,GPIO.HIGH)
 	
-	D.start(100) #PWM
+	D.start(55) #PWM
 	GPIO.output(MotorD_A,GPIO.LOW)
-	GPIO.output(MotorD_E,GPIO.HIGH)
+	#GPIO.output(MotorD_E,GPIO.HIGH)
 	
 def stop():
 	print "Stopping motor"
@@ -77,7 +77,7 @@ GPIO.add_event_detect(SensorRoueD, GPIO.RISING, callback = IncrementSensorG, bou
 GPIO.add_event_detect(SensorRoueG, GPIO.RISING, callback = IncrementSensorD, bouncetime = 29)
 
 drive()
-sleep(5)
+sleep(3)
 
 print "compteurD = %d " %compteurD
 print "compteurG = %d " %compteurG
