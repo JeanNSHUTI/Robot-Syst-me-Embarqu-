@@ -37,7 +37,7 @@ def Wheel():
 		sys.stdout.write("!\n")
 		sys.stdout.flush()
 		CurRot = 0
-GPIO.output(M1, 1)
+#GPIO.output(M1, 1)
 while Running:
 	In = GPIO.input(Encode)
 	if GPIO.input(Encode) == 0 and Last == 1:
