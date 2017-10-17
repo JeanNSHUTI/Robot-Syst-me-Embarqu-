@@ -29,12 +29,12 @@ def setup():
 	D = GPIO.PWM(PWMD,10)
 
 	#GPIO.setup(Motor1A,GPIO.OUT)
-	GPIO.setup(Motor1B,GPIO.OUT)
-	GPIO.setup(Motor1E,GPIO.OUT)
+	GPIO.setup(MotorG_A,GPIO.OUT)
+	GPIO.setup(MotorG_E,GPIO.OUT)
 
 	#GPIO.setup(Motor2A,GPIO.OUT)
-	GPIO.setup(Motor2B,GPIO.OUT)
-	GPIO.setup(Motor2E,GPIO.OUT)
+	GPIO.setup(MotorD_A,GPIO.OUT)
+	GPIO.setup(MotorD_E,GPIO.OUT)
 	
 	GPIO.add_event_detect(SensorRoueD, GPIO.RISING, callback = IncrementSensorG, bouncetime = 29)
 	GPIO.add_event_detect(SensorRoueG, GPIO.RISING, callback = IncrementSensorD, bouncetime = 29)
