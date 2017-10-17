@@ -35,6 +35,9 @@ def setup():
 	#GPIO.setup(Motor2A,GPIO.OUT)
 	GPIO.setup(Motor2B,GPIO.OUT)
 	GPIO.setup(Motor2E,GPIO.OUT)
+	
+	GPIO.add_event_detect(SensorRoueD, GPIO.RISING, callback = IncrementSensorG, bouncetime = 29)
+	GPIO.add_event_detect(SensorRoueG, GPIO.RISING, callback = IncrementSensorD, bouncetime = 29)
 
 ###     Interruptions for Capteur Roue Codeuse    ###
 def IncrementSensorG(channel):
@@ -47,10 +50,15 @@ def IncrementSensorD(channel):
 	global compteurD
 	#print "compteurD = %d " %compteurD
 	compteurD = compteurD + 1
+	
+setup()
+drive()
+sleep(5)
 
-GPIO.add_event_detect(SensorRoueD, GPIO.RISING, callback = IncrementSensorG, bouncetime = 29)
-GPIO.add_event_detect(SensorRoueG, GPIO.RISING, callback = IncrementSensorD, bouncetime = 29)
+print "compteurD = %d " %compteurD
+print "compteurG = %d " %compteurG
 
+stop()
 
 ###     Fonctions     ###
 
@@ -85,15 +93,6 @@ def stop():
 	GPIO.output(MotorD_E,GPIO.LOW)
 
 	GPIO.cleanup()
-	
-setup()
-drive()
-sleep(5)
-
-print "compteurD = %d " %compteurD
-print "compteurG = %d " %compteurG
-
-stop()
 
 
 
