@@ -1,9 +1,9 @@
 import time, sys
 import RPi.GPIO as GPIO
 
-Encode = int(sys.argv[1])
-Rotate = int(sys.argv[2]) - 1
-M1 = int(sys.argv[3])
+Encode = 13
+Rotate = 3 - 1
+#M1 = int(sys.argv[3])
 
 #Pins = [17, 18, 27, 22, 23, 24, 25, 4, 28, 29, 30, 31]
 GPIO.setmode(11)
