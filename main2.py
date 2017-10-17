@@ -1,10 +1,12 @@
 import RPi.GPIO as GPIO
 from time import sleep
-
+import math
 ###     Fonctions     ###
 
 ###     Setup     ###
 GPIO.setmode(GPIO.BOARD)
+
+
 PWMG = 7
 MotorG_A = 12
 MotorG_E = 22
@@ -48,14 +50,16 @@ def drive():
 
 	G.start(70)   #PWM
 	GPIO.output(MotorG_A,GPIO.LOW)
-	GPIO.output(MotorG_E,GPIO.HIGH)
+	#GPIO.output(MotorG_E,GPIO.HIGH)
 
 	#GPIO.output(Motor2A,GPIO.HIGH)
 	
-	D.start(55) #PWM
+	D.start(60) #PWM
 	GPIO.output(MotorD_A,GPIO.LOW)
-	#GPIO.output(MotorD_E,GPIO.HIGH)
 	
+	GPIO.output(MotorD_E,GPIO.HIGH)
+	GPIO.output(MotorG_E,GPIO.HIGH)
+
 def stop():
 	print "Stopping motor"
 	GPIO.output(MotorG_E,GPIO.LOW)
@@ -67,28 +71,30 @@ def stop():
 def IncrementSensorG(channel):
 	global compteurG
 	global CurRotG
+	global RotationsG
 	compteurG = compteurG + 1
 	CurRotG = CurRotG + 1
-	if CurRot == 20:
-		Rotations = Rotations + 1
+	if CurRotG == 20:
+		RotationsG = RotationsG + 1
 		CurRotG = 0
 
 def IncrementSensorD(channel):
 	global compteurD
 	global CurRotD
+	global RotationsD
 	compteurD = compteurD + 1
 	CurRotD = CurRotD + 1
-	if CurRot == 20:
-		Rotations = Rotations + 1
+	if CurRotD == 20:
+		RotationsD = RotationsD + 1
 		CurRotD = 0
 	
-GPIO.add_event_detect(SensorRoueD, GPIO.RISING, callback = IncrementSensorG, bouncetime = 20)
-GPIO.add_event_detect(SensorRoueG, GPIO.RISING, callback = IncrementSensorD, bouncetime = 20)
+GPIO.add_event_detect(SensorRoueD, GPIO.RISING, callback = IncrementSensorG, bouncetime = 15)
+GPIO.add_event_detect(SensorRoueG, GPIO.RISING, callback = IncrementSensorD, bouncetime = 15)
 
 drive()
-sleep(3)
-nombre_de_trous = (compteurD + compteurG) / 2					#Average number of holes
-distance_mesuree_m = (2*math.pi*3.4*nombre_de_trous)/(100*20)	#Calculate average distance
+sleep(3.5)
+nombre_de_trous = compteurD 					#Average number of holes
+distance_mesuree_m = (22*nombre_de_trous)/(20)	#Calculate average distance
 print "compteurD = %d " %compteurD
 print "compteurG = %d " %compteurG
 print "\n{} Rotations!".format(RotationsD+1)

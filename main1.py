@@ -77,6 +77,7 @@ GPIO.add_event_detect(SensorRoueD, GPIO.RISING, callback = IncrementSensorG, bou
 GPIO.add_event_detect(SensorRoueG, GPIO.RISING, callback = IncrementSensorD, bouncetime = 29)
 
 drive()
+
 sleep(3)
 
 print "compteurD = %d " %compteurD
