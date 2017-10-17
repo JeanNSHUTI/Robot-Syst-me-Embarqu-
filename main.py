@@ -7,12 +7,12 @@ from time import sleep
 GPIO.setmode(GPIO.BOARD)
 Motor1A = 16
 Motor1B = 18
-pinPWMG = 22
+Motor1E = 22
 
 Motor2A = 19
 Motor2B = 21
-#Motor2E = 23
-pinPWMD = 12
+Motor2E = 23
+
 
 SensorRoueD = 15
 SensorRoueG = 11
@@ -21,22 +21,22 @@ compteurG = 0
 compteurD = 0
 
 
-GPIO.setup(pinPWMD,GPIO.OUT)
-D = GPIO.PWM(pinPWMD,100)
+GPIO.setup(Motor1A,GPIO.OUT)
+D = GPIO.PWM(Motor1A,100)
 
-GPIO.setup(pinPWMG,GPIO.OUT)
-G = GPIO.PWM(pinPWMG,100)
+GPIO.setup(Motor2A,GPIO.OUT)
+G = GPIO.PWM(Motor2A,100)
 
 GPIO.setup(SensorRoueD,GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(SensorRoueG,GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
-GPIO.setup(Motor1A,GPIO.OUT)
+#GPIO.setup(Motor1A,GPIO.OUT)
 GPIO.setup(Motor1B,GPIO.OUT)
-#GPIO.setup(Motor1E,GPIO.OUT)
+GPIO.setup(Motor1E,GPIO.OUT)
 
-GPIO.setup(Motor2A,GPIO.OUT)
+#GPIO.setup(Motor2A,GPIO.OUT)
 GPIO.setup(Motor2B,GPIO.OUT)
-#GPIO.setup(Motor2E,GPIO.OUT)
+GPIO.setup(Motor2E,GPIO.OUT)
 
 ###     Interruption Capteur Roue Codeuse    ###
 def IncrementSensorG(channel):
@@ -59,18 +59,17 @@ GPIO.add_event_detect(SensorRoueG, GPIO.RISING, callback = IncrementSensorD, bou
 ##   Avancer   ##
 print "Forward"
 
-GPIO.output(Motor1A,GPIO.HIGH)
+#GPIO.output(Motor1A,GPIO.HIGH)
 GPIO.output(Motor1B,GPIO.LOW)
 G.start(100)   #PWM
-#GPIO.output(Motor1E,GPIO.HIGH)
+GPIO.output(Motor1E,GPIO.HIGH)
 
 
 
-GPIO.output(Motor2A,GPIO.HIGH)
+#GPIO.output(Motor2A,GPIO.HIGH)
 GPIO.output(Motor2B,GPIO.LOW)
 D.start(100) #PWM
-
-#GPIO.output(Motor2E,GPIO.HIGH)
+GPIO.output(Motor2E,GPIO.HIGH)
 
 sleep(5)
 
