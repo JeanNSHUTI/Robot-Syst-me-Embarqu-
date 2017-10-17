@@ -38,8 +38,7 @@ GPIO.setup(MotorG_E,GPIO.OUT)
 GPIO.setup(MotorD_A,GPIO.OUT)
 GPIO.setup(MotorD_E,GPIO.OUT)
 
-GPIO.add_event_detect(SensorRoueD, GPIO.RISING, callback = IncrementSensorG, bouncetime = 29)
-GPIO.add_event_detect(SensorRoueG, GPIO.RISING, callback = IncrementSensorD, bouncetime = 29)
+
 	
 def drive():
 	print "Forward"
@@ -74,6 +73,9 @@ def IncrementSensorD(channel):
 	#print "compteurD = %d " %compteurD
 	compteurD = compteurD + 1
 	
+GPIO.add_event_detect(SensorRoueD, GPIO.RISING, callback = IncrementSensorG, bouncetime = 29)
+GPIO.add_event_detect(SensorRoueG, GPIO.RISING, callback = IncrementSensorD, bouncetime = 29)
+
 drive()
 sleep(5)
 
