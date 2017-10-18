@@ -79,8 +79,8 @@ def reverse(distance):
 		A1.start(0)   #PWM
 		B1.start(80)	
 		A2.start(0) #PWM
-		B2.start(65)	
-		
+		B2.start(65)
+		distance_mesuree_m = (22*compteurD)/(20)	#Calculate average distance		
 	compteurG = 0
 	compteurD = 0
 	distance_mesuree_m = 0
@@ -142,10 +142,10 @@ GPIO.add_event_detect(SensorRoueG, GPIO.RISING, callback = IncrementSensorD, bou
 ### Main ###
 
 
-#drive(100)
-#turnRight(30)#
-#drive(50)
-#turnLeft(30)
+drive(100)
+turnRight(30)#
+drive(50)
+turnLeft(30)
 reverse(100)
 #sleep(3.5)
 #nombre_de_trous = compteurD 					#Average number of holes
