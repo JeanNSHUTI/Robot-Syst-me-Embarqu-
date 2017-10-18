@@ -89,7 +89,7 @@ def turnLeft(rayon):
 	global angle
 	global distance_mesuree_m
 	distance_turn = rayon * math.pi * angle / 360
-	while distance_turn < distance_mesuree_m:
+	while distance_mesuree_m < distance_turn:
 		A1.start(0)   #PWM
 		B1.start(40)
 		A2.start(0) #PWM
@@ -101,7 +101,7 @@ def turnRight(rayon):
 	global angle
 	global distance_mesuree_m
 	distance_turn = rayon * math.pi * angle / 360
-	while distance_turn < distance_mesuree_m:
+	while distance_mesuree_m < distance_turn:
 		A1.start(80)   #PWM
 		B1.start(0)
 		A2.start(32.5) #PWM
