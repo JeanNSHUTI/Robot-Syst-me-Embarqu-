@@ -136,16 +136,16 @@ def stop():
 	print "Stopping motor"
 	GPIO.output(MotorG_E,GPIO.LOW)
 	GPIO.output(MotorD_E,GPIO.LOW)
-	sleep(1)
+	time.sleep(1)
 	print "go"
 	
 def ultrason() :
 	GPIO.output(TRIG, False)                 #Set TRIG as LOW
 	print "Waitng For Sensor To Settle"
-	sleep(0.001)                            #Delay of 2 seconds
+	time.sleep(0.001)                            #Delay of 2 seconds
   	GPIO.output(TRIG, True)                  #Set TRIG as HIGH
 
-	sleep(0.00001)                      #Delay of 0.00001 seconds
+	time.sleep(0.00001)                      #Delay of 0.00001 seconds
   	GPIO.output(TRIG, False)                 #Set TRIG as LOw
   	
 	while GPIO.input(ECHO)==0:               #Check whether the ECHO is LOW
