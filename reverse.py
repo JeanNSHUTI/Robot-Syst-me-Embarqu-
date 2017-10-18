@@ -23,6 +23,9 @@ A2 = GPIO.PWM(PWMD,100)
 GPIO.setup(MotorD_A,GPIO.OUT)
 B2 = GPIO.PWM(MotorD_A,100)
 
+GPIO.setup(MotorD_E,GPIO.OUT)
+GPIO.setup(MotorG_E,GPIO.OUT)
+
 def reverse():
 	print "Reverse"
 	#GPIO.output(Motor1A,GPIO.HIGH)
