@@ -157,10 +157,10 @@ def ultrason() :
   	
 	pulse_duration = pulse_end - pulse_start #Get pulse duration to a variable
 	print pulse_duration
-  	distance = pulse_duration * 17150       #Multiply pulse duration by 17150 to get distance
-  	distance = round(distance, 2)            #Round to two decimal points
-  	if distance < 10:      #Check whether the distance is within range
-    		print "Distance : ",distance," cm"  #Print distance with 0.5 cm calibration
+  	distanceU = pulse_duration * 17150       #Multiply pulse duration by 17150 to get distance
+  	distanceU = round(distance, 2)            #Round to two decimal points
+  	if distanceU < 10:      #Check whether the distance is within range
+    		print "Distance : ",distanceU," cm"  #Print distance with 0.5 cm calibration
 	stop()
 
 
