@@ -102,7 +102,7 @@ def turnLeft(rayon):
 def turnRight(rayon):
 	print "turning right"
 	global angle
-	global distance_mesuree_m
+	global distance_mesuree_G
 	global compteurG
 	distance_turn = rayon * math.pi * angle / 360
 	while distance_mesuree_G < distance_turn:
@@ -111,7 +111,7 @@ def turnRight(rayon):
 		A2.start(32.5) #PWM
 		B2.start(0)
 		distance_mesuree_G = (22*compteurG)/(20)	#Calculate average distance
-	distance_mesuree_m = 0
+	distance_mesuree_G = 0
 	
 def stop():
 	print "Stopping motor"
