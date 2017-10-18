@@ -52,8 +52,8 @@ def drive(distance):
 	global distance_mesuree_m
 	global compteurG
 	global compteurD
-	GPIO.output(MotorD_E,GPIO.HIGH)
-	GPIO.output(MotorG_E,GPIO.HIGH)
+	#GPIO.output(MotorD_E,GPIO.HIGH)
+	#GPIO.output(MotorG_E,GPIO.HIGH)
 	print "test1"
 	while distance_mesuree_m < distance :
 		
@@ -72,8 +72,8 @@ def reverse(distance):
 	global distance_mesuree_m
 	global compteurG
 	global compteurD
-	GPIO.output(MotorD_E,GPIO.HIGH)
-	GPIO.output(MotorG_E,GPIO.HIGH)
+	#GPIO.output(MotorD_E,GPIO.HIGH)
+	#GPIO.output(MotorG_E,GPIO.HIGH)
 	
 	while distance_mesuree_m < distance :
 	
@@ -92,14 +92,14 @@ def turnLeft(rayon):
 	global distance_mesuree_m
 	global compteurG
 	distance_turn = rayon * math.pi * angle / 360
-	GPIO.output(MotorD_E,GPIO.HIGH)
-	GPIO.output(MotorG_E,GPIO.HIGH)
+	#GPIO.output(MotorD_E,GPIO.HIGH)
+	#GPIO.output(MotorG_E,GPIO.HIGH)
 	
 	while distance_mesuree_m < distance_turn:
-		A1.start(0)   #PWM
-		B1.start(40)
-		A2.start(0) #PWM
-		B2.start(65)
+		A1.start(40)   #PWM
+		B1.start(0)
+		A2.start(65) #PWM
+		B2.start(0)
 		distance_mesuree_m = (22*compteurD)/(20)	#Calculate average distance
 	distance_mesuree_m = 0
 def turnRight(rayon):
@@ -108,8 +108,6 @@ def turnRight(rayon):
 	global distance_mesuree_G
 	global compteurG
 	distance_turn = rayon * math.pi * angle / 360
-	GPIO.output(MotorD_E,GPIO.HIGH)
-	GPIO.output(MotorG_E,GPIO.HIGH)
 	
 	while distance_mesuree_G < distance_turn:
 		A1.start(80)   #PWM
@@ -125,6 +123,8 @@ def stop():
 	GPIO.output(MotorD_E,GPIO.LOW)
 	sleep(1)
 	print "go"
+	GPIO.output(MotorD_E,GPIO.HIGH)
+	GPIO.output(MotorG_E,GPIO.HIGH)
 
 
 
