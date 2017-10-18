@@ -60,6 +60,8 @@ def drive(distance):
 		B1.start(0)
 		A2.start(65) #PWM
 		B2.start(0)
+		print "distance_mesuree= %d " %distance_mesuree_m
+		print "distance= %d " %distance
 	print "test2"
 	compteurG = 0
 	compteurD = 0
