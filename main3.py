@@ -141,13 +141,9 @@ GPIO.add_event_detect(SensorRoueG, GPIO.RISING, callback = IncrementSensorD, bou
 
 
 drive(100)
-stop()
 turnRight(30)
-stop()
 drive(50)
-stop()
 turnLeft(30)
-stop()
 reverse(100)
 #sleep(3.5)
 #nombre_de_trous = compteurD 					#Average number of holes
