@@ -52,8 +52,8 @@ def drive(distance):
 	global distance_mesuree_m
 	global compteurG
 	global compteurD
-	#GPIO.output(MotorD_E,GPIO.HIGH)
-	#GPIO.output(MotorG_E,GPIO.HIGH)
+	GPIO.output(MotorD_E,GPIO.HIGH)
+	GPIO.output(MotorG_E,GPIO.HIGH)
 	print "test1"
 	while distance_mesuree_m < distance :
 		
