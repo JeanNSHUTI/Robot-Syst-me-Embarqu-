@@ -141,13 +141,7 @@ def stop():
 	time.sleep(1)
 	print "go"
 
-def stopU():
-	print "Stopping motor"
-	GPIO.output(MotorG_E,GPIO.LOW)
-	GPIO.output(MotorD_E,GPIO.LOW)
-	time.sleep(1)
-	print "go"
-	
+
 	
 def ultrason() :
 	global pulse_start
