@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
-from time import sleep
-from time import time
+"from time import sleep
+import time
 import math
 ###     Fonctions     ###
 
