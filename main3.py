@@ -95,7 +95,7 @@ def turnLeft(rayon):
 		B1.start(40)
 		A2.start(0) #PWM
 		B2.start(65)
-
+		distance_mesuree_m = (22*compteurD)/(20)	#Calculate average distance
 	distance_mesuree_m = 0
 def turnRight(rayon):
 	print "turning right"
@@ -105,8 +105,9 @@ def turnRight(rayon):
 	while distance_mesuree_m < distance_turn:
 		A1.start(80)   #PWM
 		B1.start(0)
-		A2.start(0) #PWM
+		A2.start(32.5) #PWM
 		B2.start(0)
+		distance_mesuree_m = (22*compteurD)/(20)	#Calculate average distance
 	distance_mesuree_m = 0
 	
 def stop():
