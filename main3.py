@@ -116,6 +116,7 @@ def turnLeft(rayon):
 		B2.start(0)
 		distance_mesuree_m = (22*compteurD)/(20)	#Calculate average distance
 	distance_mesuree_m = 0
+	
 def turnRight(rayon):
 	print "turning right"
 	GPIO.output(MotorD_E,GPIO.HIGH)
