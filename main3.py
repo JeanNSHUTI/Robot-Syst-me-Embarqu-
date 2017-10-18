@@ -61,9 +61,8 @@ def drive(distance):
 		A2.start(65) #PWM
 		B2.start(0)
 		distance_mesuree_m = (22*compteurD)/(20)	#Calculate average distance
-		print "distance_mesuree= %d " %distance_mesuree_m
-		print "distance= %d " %distance
 	print "test2"
+	distance_mesuree_m
 	compteurG = 0
 	compteurD = 0
 		
