@@ -163,7 +163,7 @@ def ultrason() :
   	distanceU = round(distanceU, 2)            #Round to two decimal points
   	if distanceU < 10:      #Check whether the distance is within range
     		print "Distance : ",distanceU," cm"  #Print distance with 0.5 cm calibration
-	stop()
+		stop()
 
 
 ###     Interruptions for Capteur Roue Codeuse    ###
