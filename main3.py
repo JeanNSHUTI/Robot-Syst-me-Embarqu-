@@ -60,6 +60,7 @@ def drive(distance):
 		B1.start(0)
 		A2.start(65) #PWM
 		B2.start(0)
+		distance_mesuree_m = (22*compteurD)/(20)	#Calculate average distance
 		print "distance_mesuree= %d " %distance_mesuree_m
 		print "distance= %d " %distance
 	print "test2"
@@ -131,7 +132,6 @@ def IncrementSensorD(channel):
 	global RotationsD
 	compteurD = compteurD + 1
 	CurRotD = CurRotD + 1
-	distance_mesuree_m = (22*compteurD)/(20)	#Calculate average distance
 	if CurRotD == 20:
 		RotationsD = RotationsD + 1
 		CurRotD = 0
