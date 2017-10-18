@@ -69,6 +69,8 @@ def drive(distance):
 	print "test1"
 	while distance_mesuree_m < distance :
 		ultrason()
+		GPIO.output(MotorD_E,GPIO.HIGH)
+		GPIO.output(MotorG_E,GPIO.HIGH)
 		A1.start(80)   #PWM
 		B1.start(0)
 		A2.start(65) #PWM
@@ -138,6 +140,14 @@ def stop():
 	GPIO.output(MotorD_E,GPIO.LOW)
 	time.sleep(1)
 	print "go"
+
+def stopU():
+	print "Stopping motor"
+	GPIO.output(MotorG_E,GPIO.LOW)
+	GPIO.output(MotorD_E,GPIO.LOW)
+	time.sleep(1)
+	print "go"
+	
 	
 def ultrason() :
 	global pulse_start
