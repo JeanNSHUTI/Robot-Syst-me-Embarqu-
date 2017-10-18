@@ -92,6 +92,9 @@ def turnLeft(rayon):
 	global distance_mesuree_m
 	global compteurG
 	distance_turn = rayon * math.pi * angle / 360
+	GPIO.output(MotorD_E,GPIO.HIGH)
+	GPIO.output(MotorG_E,GPIO.HIGH)
+	
 	while distance_mesuree_m < distance_turn:
 		A1.start(0)   #PWM
 		B1.start(40)
@@ -105,6 +108,9 @@ def turnRight(rayon):
 	global distance_mesuree_G
 	global compteurG
 	distance_turn = rayon * math.pi * angle / 360
+	GPIO.output(MotorD_E,GPIO.HIGH)
+	GPIO.output(MotorG_E,GPIO.HIGH)
+	
 	while distance_mesuree_G < distance_turn:
 		A1.start(80)   #PWM
 		B1.start(0)
@@ -117,6 +123,8 @@ def stop():
 	print "Stopping motor"
 	GPIO.output(MotorG_E,GPIO.LOW)
 	GPIO.output(MotorD_E,GPIO.LOW)
+	time.sleep(1)
+	print "go"
 
 
 
@@ -147,9 +155,13 @@ GPIO.add_event_detect(SensorRoueG, GPIO.RISING, callback = IncrementSensorD, bou
 
 
 drive(100)
+stop()
 turnRight(30)#
+stop()
 drive(50)
+stop()
 turnLeft(30)
+stop()
 reverse(100)
 #sleep(3.5)
 #nombre_de_trous = compteurD 					#Average number of holes
