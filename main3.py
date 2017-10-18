@@ -53,14 +53,14 @@ def drive(distance):
 	global compteurD
 	GPIO.output(MotorD_E,GPIO.HIGH)
 	GPIO.output(MotorG_E,GPIO.HIGH)
-	
+	print "test1"
 	while distance_mesuree_m < distance :
-	
+		
 		A1.start(80)   #PWM
 		B1.start(0)
 		A2.start(65) #PWM
 		B2.start(0)
-	
+	print "test2"
 	compteurG = 0
 	compteurD = 0
 		
