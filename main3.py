@@ -105,7 +105,7 @@ def turnRight(rayon):
 	global distance_mesuree_m
 	global compteurG
 	distance_turn = rayon * math.pi * angle / 360
-	while distance_mesuree_m < distance_turn:
+	while distance_mesuree_G < distance_turn:
 		A1.start(80)   #PWM
 		B1.start(0)
 		A2.start(32.5) #PWM
