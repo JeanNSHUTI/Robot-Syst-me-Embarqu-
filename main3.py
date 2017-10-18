@@ -6,6 +6,17 @@ import math
 ###     Setup     ###
 GPIO.setmode(GPIO.BOARD)
 
+pulse_start = 0
+pulse_end = 0
+
+TRIG = 23                                  #Associate pin 23 to TRIG
+ECHO = 24                                  #Associate pin 24 to ECHO
+
+print "Distance measurement in progress"
+
+GPIO.setup(TRIG,GPIO.OUT)                  #Set pin as GPIO out
+GPIO.setup(ECHO,GPIO.IN)                   #Set pin as GPIO in
+
 
 PWMG = 7
 MotorG_A = 12
