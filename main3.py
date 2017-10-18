@@ -140,6 +140,8 @@ def stop():
 	print "go"
 	
 def ultrason() :
+	global pulse_start
+	global pulse_end
 	GPIO.output(TRIG, False)                 #Set TRIG as LOW
 	print "Waitng For Sensor To Settle"
 	time.sleep(0.001)                            #Delay of 2 seconds
