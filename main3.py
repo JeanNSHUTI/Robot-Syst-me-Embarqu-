@@ -62,9 +62,9 @@ def drive(distance):
 		B2.start(0)
 		distance_mesuree_m = (22*compteurD)/(20)	#Calculate average distance
 	print "test2"
-	distance_mesuree_m
 	compteurG = 0
 	compteurD = 0
+	distance_mesuree_m = 0
 		
 def reverse(distance):
 	print "Reverse"
@@ -83,6 +83,7 @@ def reverse(distance):
 		
 	compteurG = 0
 	compteurD = 0
+	distance_mesuree_m = 0
 	
 def turnLeft(rayon):
 	print "turning left"
@@ -95,7 +96,7 @@ def turnLeft(rayon):
 		A2.start(0) #PWM
 		B2.start(65)
 
-	
+	distance_mesuree_m = 0
 def turnRight(rayon):
 	print "turning right"
 	global angle
@@ -106,7 +107,8 @@ def turnRight(rayon):
 		B1.start(0)
 		A2.start(32.5) #PWM
 		B2.start(0)
-
+	distance_mesuree_m = 0
+	
 def stop():
 	print "Stopping motor"
 	GPIO.output(MotorG_E,GPIO.LOW)
