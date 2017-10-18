@@ -67,7 +67,7 @@ def drive(distance):
 	GPIO.output(MotorG_E,GPIO.HIGH)
 	print "test1"
 	while distance_mesuree_m < distance :
-		
+		ultrason()
 		A1.start(80)   #PWM
 		B1.start(0)
 		A2.start(65) #PWM
@@ -87,7 +87,6 @@ def reverse(distance):
 	GPIO.output(MotorG_E,GPIO.HIGH)
 	
 	while distance_mesuree_m < distance :
-	
 		A1.start(0)   #PWM
 		B1.start(80)	
 		A2.start(0) #PWM
@@ -107,6 +106,7 @@ def turnLeft(rayon):
 	GPIO.output(MotorG_E,GPIO.HIGH)
 	
 	while distance_mesuree_m < distance_turn:
+		ultrason()
 		A1.start(40)   #PWM
 		B1.start(0)
 		A2.start(65) #PWM
@@ -123,6 +123,7 @@ def turnRight(rayon):
 	distance_turn = rayon * math.pi * angle / 360
 	
 	while distance_mesuree_G < distance_turn:
+		ultrason()
 		A1.start(80)   #PWM
 		B1.start(0)
 		A2.start(32.5) #PWM
