@@ -72,8 +72,8 @@ def reverse(distance):
 	global distance_mesuree_m
 	global compteurG
 	global compteurD
-	#GPIO.output(MotorD_E,GPIO.HIGH)
-	#GPIO.output(MotorG_E,GPIO.HIGH)
+	GPIO.output(MotorD_E,GPIO.HIGH)
+	GPIO.output(MotorG_E,GPIO.HIGH)
 	
 	while distance_mesuree_m < distance :
 	
@@ -92,8 +92,8 @@ def turnLeft(rayon):
 	global distance_mesuree_m
 	global compteurG
 	distance_turn = rayon * math.pi * angle / 360
-	#GPIO.output(MotorD_E,GPIO.HIGH)
-	#GPIO.output(MotorG_E,GPIO.HIGH)
+	GPIO.output(MotorD_E,GPIO.HIGH)
+	GPIO.output(MotorG_E,GPIO.HIGH)
 	
 	while distance_mesuree_m < distance_turn:
 		A1.start(40)   #PWM
@@ -104,6 +104,8 @@ def turnLeft(rayon):
 	distance_mesuree_m = 0
 def turnRight(rayon):
 	print "turning right"
+	GPIO.output(MotorD_E,GPIO.HIGH)
+	GPIO.output(MotorG_E,GPIO.HIGH)
 	global angle
 	global distance_mesuree_G
 	global compteurG
@@ -123,9 +125,30 @@ def stop():
 	GPIO.output(MotorD_E,GPIO.LOW)
 	sleep(1)
 	print "go"
-	GPIO.output(MotorD_E,GPIO.HIGH)
-	GPIO.output(MotorG_E,GPIO.HIGH)
+	
+def ultrason() :
+	GPIO.output(TRIG, False)                 #Set TRIG as LOW
+	print "Waitng For Sensor To Settle"
+	time.sleep(0.1)                            #Delay of 2 seconds
+  	GPIO.output(TRIG, True)                  #Set TRIG as HIGH
 
+	time.sleep(0.00001)                      #Delay of 0.00001 seconds
+  	GPIO.output(TRIG, False)                 #Set TRIG as LOw
+  	
+	while GPIO.input(ECHO)==0:               #Check whether the ECHO is LOW
+    		pulse_start = time.time()              #Saves the last known time of LOW pulse
+
+  	
+	while GPIO.input(ECHO)==1:               #Check whether the ECHO is HIGH
+    		pulse_end = time.time()                #Saves the last known time of HIGH pulse 
+  	
+	pulse_duration = pulse_end - pulse_start #Get pulse duration to a variable
+	print pulse_duration
+  	distance = pulse_duration * 17150       #Multiply pulse duration by 17150 to get distance
+  	distance = round(distance, 2)            #Round to two decimal points
+  	if distanceU < 10:      #Check whether the distance is within range
+    		print "Distance : ",distance," cm"  #Print distance with 0.5 cm calibration
+	stop()
 
 
 ###     Interruptions for Capteur Roue Codeuse    ###
