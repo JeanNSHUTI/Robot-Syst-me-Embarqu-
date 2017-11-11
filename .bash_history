@@ -18,3 +18,6 @@ sudo reboot
 ls
 python motors.py
 nano motors.py
+clear
+python main1.py
+nano main1.py
